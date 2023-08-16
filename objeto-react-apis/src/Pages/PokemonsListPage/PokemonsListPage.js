@@ -1,15 +1,15 @@
-import React from "react";
-import { Container, Container2 } from "./pokemonListPageStyle";
+import React, { useEffect } from "react";
+import { Container } from "./pokemonListPageStyle";
 import { goToPokedex } from "../../Routs/coordinator";
 import { useNavigate } from "react-router-dom";
-import { usePokemonList } from "../../hooks/useRequestPokemon";
+import { PokemonCard } from "../../Components/PokemonCard/PokemonCard";
 
-
-const PokemonListPage = ({PokemonCard}) => {
+const PokemonListPage = () => {
   const navigate = useNavigate();
 
-  const [pokemonList] = usePokemonList();
-  console.log(pokemonList);
+  useEffect(()=>{},[
+    
+  ])
 
   return (
     <>
