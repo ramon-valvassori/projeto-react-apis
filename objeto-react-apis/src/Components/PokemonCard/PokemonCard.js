@@ -1,22 +1,21 @@
-import React from "react"
-import { useRequestPokemon } from "../../hooks/useRequestPokemon"
-import PokemonListPage from "../../Pages/PokemonsListPage/PokemonsListPage"
+import React from "react";
+import { usePokemonList } from "../../hooks/useRequestPokemon";
 
+export const PokemonCard = () => {
+  const [pokemonList] = usePokemonList();
 
-const PokemonCard = (props) => {
-    console.log(props);
+  
 
-   /* onst [name, url] = props */
-    
-        return(
-            <PokemonListPage>
-               
-                
-               
-                
-            </PokemonListPage>)
-   
-}      
-
-
-export default PokemonCard
+  return (
+    <FeedContainerStyled>
+    {pokemonList
+    .slice(0, 20)
+    .map((pokemon, i) => (
+      <RecipeCardStyled key={i}> 
+      <img src={pokemon.url} alt="imagem do pokemon"/>
+      <h3>{pokemon.name}</h3>
+      </RecipeCardStyled>   
+          ))};
+          </FeedContainerStyled>
+  );
+};
