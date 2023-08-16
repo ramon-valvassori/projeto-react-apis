@@ -3,9 +3,9 @@ import { Container, Container2 } from "./pokemonListPageStyle";
 import { goToPokedex } from "../../Routs/coordinator";
 import { useNavigate } from "react-router-dom";
 import { usePokemonList } from "../../hooks/useRequestPokemon";
-import { PokemonCard } from "../../PokemonCard/PokemonCard";
 
-const PokemonListPage = () => {
+
+const PokemonListPage = ({PokemonCard}) => {
   const navigate = useNavigate();
 
   const [pokemonList] = usePokemonList();
