@@ -1,60 +1,40 @@
 import React, { useEffect, useState } from "react";
-import { usePokemonList } from "../../hooks/useRequestPokemon";
 import {
   PokemonCardContainerStyled,
   RecipeCardStyled,
 } from "./pokemonCardStyle";
 import axios from "axios";
+import { goToPokedexDetail } from "../../Routs/coordinator";
+import { useNavigate } from "react-router-dom";
 
-export const PokemonCard = () => {
-  const [pokemonList] = usePokemonList();
-  const [pok, setPok] = useState();
+export const PokemonCard = ({ pokemon }) => {
+  const [newPokemon, setNewPokemon] = useState();
 
-  const card = () => {
-    pokemonList.slice(0, 20).map((pokemon, i) => {
-      axios
-        .get(pokemon.url)
-        .then((resp) => {
-          setPok(resp.data)
-          console.log('Estamos aqui', resp.data.sprites.other.home.front_default);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
-  };
+  const navigate = useNavigate();
 
   useEffect(() => {
-    card()
+    axios
+      .get(pokemon.url)
+      .then((resp) => {
+        setNewPokemon(resp.data);
+      })
+      .catch((erro) => {});
   }, []);
-  
-  useEffect(() => {
-    console.log(pok);
-  }, [setPok]);
-  
+
   return (
     <PokemonCardContainerStyled>
-      {pokemonList.slice(0, 20).map((pokemon, i) => {
-        axios
-          .get(pokemon.url)
-          .then((resp) => {
-            //console.log(resp.data.sprites.other.home.front_default);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-        //console.log(pokemon.url);
-
-        return (
-          <RecipeCardStyled key={i}>
-            <h3>{pokemon.name}</h3>
-            <img
-             
-              alt="imagem do pokemon"
-            />
-          </RecipeCardStyled>
-        );
-      })}
+      {newPokemon && (
+        <RecipeCardStyled>
+          <h3>{newPokemon.name}</h3>
+          <img
+            src={newPokemon.sprites.other.home.front_default}
+            alt="imagem do pokemon"
+          />
+          <button onClick={() => goToPokedexDetail(navigate, newPokemon.name)}>
+            Detalhes
+          </button>
+        </RecipeCardStyled>
+      )}
     </PokemonCardContainerStyled>
   );
 };

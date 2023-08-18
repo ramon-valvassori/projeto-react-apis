@@ -1,24 +1,22 @@
-import React, { useEffect } from "react";
-import { Container } from "./pokemonListPageStyle";
-import { goToPokedex } from "../../Routs/coordinator";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import { PokemonCard } from "../../Components/PokemonCard/PokemonCard";
+import { usePokemonList } from "../../hooks/useRequestPokemon";
 
 const PokemonListPage = () => {
-  const navigate = useNavigate();
+  
 
-  useEffect(()=>{},[
-    
-  ])
+  const [pokemonList] = usePokemonList();
+
+  //console.log(`pokemonList`, pokemonList);
+
+
+  const renderPokeList = pokemonList.map((pokemon, i)=>{
+    return <PokemonCard key={i} pokemon={pokemon}></PokemonCard>
+  })
 
   return (
     <>
-      <PokemonCard />
-      <Container>
-        <button onClick={() => goToPokedex(navigate)}>
-          "Ver minha POKEDEX"
-        </button>
-      </Container>
+      {renderPokeList}
     </>
   );
 };

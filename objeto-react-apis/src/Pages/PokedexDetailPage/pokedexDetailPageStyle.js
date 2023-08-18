@@ -1,5 +1,7 @@
 import styled from "styled-components"
 
+export const DetailContainer = styled.div``
+
 export const PokedexDetailHeader = styled.div`
 
        
@@ -55,6 +57,10 @@ display: flex;
         flex-direction: column;
         width: 31vh;
         margin-top: 15px;
+        h3 {
+            display: flex;
+            flex-direction: column;
+        }
     }
     .type{
         border: 1px solid black;
