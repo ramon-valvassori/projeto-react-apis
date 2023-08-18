@@ -8,7 +8,7 @@ const Header = () => {
     return(
         <div>
             <section onClick={()=>goToPokemon(navigate)}>
- 
+            <h1>1</h1>
             </section>
             <section onClick={()=>goToPokedex(navigate)}>
                 

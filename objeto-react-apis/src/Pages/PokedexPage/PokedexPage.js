@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom"
 const PokedexPage = () => {
     
     const navigate = useNavigate()
+
+    
     
     return(<>
         
