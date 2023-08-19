@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   PokemonCardContainerStyled,
   RecipeCardStyled,
@@ -9,6 +9,9 @@ import { useNavigate } from "react-router-dom";
 
 export const PokemonCard = ({ pokemon }) => {
   const [newPokemon, setNewPokemon] = useState();
+
+  /* const context = useContext(GlobalContext)
+  const { addPokemon } = context; */
 
   const navigate = useNavigate();
 
@@ -21,6 +24,11 @@ export const PokemonCard = ({ pokemon }) => {
       .catch((erro) => {});
   }, []);
 
+   const addPokemonHome = () => {
+    const listaPokemon = JSON.stringify(newPokemon);
+    localStorage.setItem("lista", listaPokemon);
+   } 
+  
   return (
     <PokemonCardContainerStyled>
       {newPokemon && (
@@ -29,7 +37,10 @@ export const PokemonCard = ({ pokemon }) => {
           <img
             src={newPokemon.sprites.other.home.front_default}
             alt="imagem do pokemon"
-          />
+            />
+            <button onClick={addPokemonHome}>Adicionar</button>
+            
+          
           <button onClick={() => goToPokedexDetail(navigate, newPokemon.name)}>
             Detalhes
           </button>
