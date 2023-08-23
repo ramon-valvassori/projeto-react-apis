@@ -9,10 +9,10 @@ function App() {
     <ChakraProvider>
       
       <GlobalStyle />
-      <GlobalState>
-      <Router />
-      </GlobalState>
+      {/* <GlobalState>}
       
+      </GlobalState> */}
+      <Router />
     </ChakraProvider>
   );
 }
