@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const PokemonCardContainerStyled = styled.div`
-  display: grid;
-  grid-template-rows: auto;
-
-  img {
-    width: 30vh;
-    height: 30vh;
-  }
+  width: 440px;
+height: 210px;
+flex-shrink: 0;
 `;
-export const RecipeCardStyled = styled.div``;
+export const RecipeCardStyled = styled.div`
+background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+
+
+`;

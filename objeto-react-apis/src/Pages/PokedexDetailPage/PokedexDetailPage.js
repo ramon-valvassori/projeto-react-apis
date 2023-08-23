@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   PokedexDetailHeader,
   PokedexDetailCard,
@@ -9,14 +9,19 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { goToPokedex } from "../../Routs/coordinator";
 import PokedexPage from "../PokedexPage/PokedexPage";
+import GlobalState from "../../context/GlobalState";
+
 
 const PokedexDetailPage = () => {
   const navigate = useNavigate();
 
+  
+  //const [pokedexDetail, setPokedexDetail] = useState({})
+
+  const { pokedexDetail, setPokedexDetail } = useContext(GlobalState);
+  console.log('ESTÁ AQUI', pokedexDetail);
+  
   const [addPokemon, setAddPokemon] = useState([]);
-
-  const [pokedexDetail, setPokedexDetail] = useState({});
-
   const [isAdded, setIsAdded] = useState(false);
 
   const { name } = useParams();
@@ -49,7 +54,7 @@ const PokedexDetailPage = () => {
 
   return (
     <DetailContainer>
-      <Header />
+      <Header/>
 
       <PokedexDetailHeader>
         <div>
