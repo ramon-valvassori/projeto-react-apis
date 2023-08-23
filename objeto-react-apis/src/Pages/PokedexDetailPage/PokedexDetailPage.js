@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   PokedexDetailHeader,
   PokedexDetailCard,
@@ -8,23 +8,29 @@ import Header from "../../Components/Header/Header";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { goToPokedex } from "../../Routs/coordinator";
+import PokedexPage from "../PokedexPage/PokedexPage";
+import GlobalState from "../../context/GlobalState";
+
 
 const PokedexDetailPage = () => {
   const navigate = useNavigate();
 
-  const { name } = useParams();
   
-  const [pokedexDetail, setPokedexDetail] = useState({});
-  const [isAdd, setIsAdd] = useState(true);
+  //const [pokedexDetail, setPokedexDetail] = useState({})
 
-  console.log(pokedexDetail);
+  const { pokedexDetail, setPokedexDetail } = useContext(GlobalState);
+  console.log('ESTÁ AQUI', pokedexDetail);
+  
+  const [addPokemon, setAddPokemon] = useState([]);
+  const [isAdded, setIsAdded] = useState(false);
+
+  const { name } = useParams();
 
   useEffect(() => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
       .then((resp) => {
         setPokedexDetail(resp.data);
-        console.log(resp);
       })
 
       .catch((err) => {
@@ -32,31 +38,36 @@ const PokedexDetailPage = () => {
       });
   }, []);
 
-  
-const handleClick = () => {
-  if (isAdd) {
-    // Adiciona o produto ao carrinho
-  } else {
-    // Remove o produto do carrinho
-  }
-  setIsAdd(!isAdd);
-};
+  const changeButton = () => {
+    setAddPokemon(pokedexDetail);
+    setIsAdded(!isAdded);
+    if (isAdded) {
+      const listaPokemon = JSON.stringify(addPokemon);
+      localStorage.setItem("lista", listaPokemon);
+    } else {
+      localStorage.removeItem("lista");
+    }
+    return <PokedexPage isAdded={isAdded}/>
+  };
 
-    
+  const buttonText = !isAdded ? "Remover da Pokedex" : "Adicionar na Pokedex";
 
   return (
-    
-      <DetailContainer>
-        <Header />
-      
+    <DetailContainer>
+      <Header/>
+
       <PokedexDetailHeader>
-        
         <div>
           <section className="header">
-            
             <button onClick={() => goToPokedex(navigate)}>Voltar</button>
             <h1>{name}</h1>
-            <button onClick={handleClick}>{isAdd ? "Adicionar" : "Remover"}</button>
+            <button
+              onClick={() => {
+                changeButton();
+              }}
+            >
+              {buttonText}
+            </button>
           </section>
         </div>
       </PokedexDetailHeader>
@@ -68,8 +79,8 @@ const handleClick = () => {
               alt="imagem do pokemon"
               className="imagem1"
             />
-              
-              <img
+
+            <img
               src={pokedexDetail.sprites?.back_default}
               alt="imagem do pokemon"
               className="imagem2"
@@ -100,7 +111,6 @@ const handleClick = () => {
           </section>
         </div>
       </PokedexDetailCard>
-      
     </DetailContainer>
   );
 };
