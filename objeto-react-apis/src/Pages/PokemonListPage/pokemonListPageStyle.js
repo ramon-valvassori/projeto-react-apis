@@ -3,16 +3,17 @@ import styled from "styled-components";
 export const RenderList = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  img{
-  width: 193px;
-height: 193px;
-flex-shrink: 0;
+  row-gap: 40px;
+  column-gap: 20px;
+  padding: 5vh 10vw;
 
+  img {
+    width: 193px;
+    height: 193px;
+  }
+`;
 
-}
-`
-
-export const Container = styled.div`
+/* export const Container = styled.div`
   header {
     border: 1px solid black;
     align-items: center;
@@ -50,3 +51,4 @@ export const Container = styled.div`
     }
   }
 `;
+ */

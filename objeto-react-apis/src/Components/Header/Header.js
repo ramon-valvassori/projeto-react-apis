@@ -1,35 +1,46 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   goToPokedexDetail,
   goToPokedex,
   goToPokemon,
 } from "../../Routs/coordinator";
-import { ButtonContainer, ButtonPokedex, HeaderContainerMaster, HeaderImgContainer, HeadersContainer } from "./headerStyle";
-import Pokemon from "../../assets/Pokemon.png";
-import { useState } from "react";
+import {
+  ButtonContainer,
+  ButtonPokedex,
+  HeaderBranca,
+  HeaderContainerMaster,
+  HeaderImgContainer,
+  HeadersContainer,
+} from "./headerStyle";
+import PokemonWhite from "../../assets/PokemonWhite.svg";
+import Branca from "../../assets/Branca.jpeg";
 
 const Header = () => {
   const navigate = useNavigate();
 
-  const [changePage, setChangePage] = useState()
-
+  const location = useLocation();
+  console.log(location);
 
   return (
-    
     <HeadersContainer>
-        <HeaderImgContainer>
-      <img src={Pokemon} alt="logo do Pokemon" />
-      </HeaderImgContainer>
-    {/*   {isInPokedexList ? <button onClick={() => goToPokedex(navigate)}>Ir para a Pokedex</button> :  
-      <button onClick={() => goToPokemon(navigate)}>
-          Voltar para a lista de Pokémons
-        </button> } */}
+        {/* <HeaderBranca>
+        <img className="Branca" src={Branca} />
+        </HeaderBranca> */}
+      <HeaderImgContainer className="Pokemon" src={PokemonWhite} alt="logo do Pokemon" />
         
+        {/* <img className="Pokemon" src={PokemonWhite} alt="logo do Pokemon" /> */}
+      {/* </HeaderImgContainer> */}
+
       <ButtonContainer>
-      <button className="Pokedex">Pokedex</button>
+        {!location.pathname.includes("pokedex") ? (
+          <button onClick={() => goToPokedex(navigate)}>Pokédex</button>
+        ) : (
+          <button onClick={() => goToPokemon(navigate)}>
+            Lista de Pokemons
+          </button>
+        )}
       </ButtonContainer>
-      </HeadersContainer>   
-      
+    </HeadersContainer>
   );
 };
 

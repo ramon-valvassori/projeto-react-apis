@@ -9,7 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { goToPokedex } from "../../Routs/coordinator";
 import PokedexPage from "../PokedexPage/PokedexPage";
-import GlobalState from "../../context/GlobalState";
+import GlobalContext from "../../context/GlobalContext";
 
 
 const PokedexDetailPage = () => {
@@ -18,7 +18,7 @@ const PokedexDetailPage = () => {
   
   //const [pokedexDetail, setPokedexDetail] = useState({})
 
-  const { pokedexDetail, setPokedexDetail } = useContext(GlobalState);
+  const { pokedexDetail, setPokedexDetail } = useContext(GlobalContext);
   console.log('ESTÁ AQUI', pokedexDetail);
   
   const [addPokemon, setAddPokemon] = useState([]);
