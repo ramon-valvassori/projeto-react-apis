@@ -1,12 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
+  Button,
+  ButtonGroup,
+  Card,
+  Heading,
   PokemonCardContainerStyled,
   RecipeCardStyled,
 } from "./pokemonCardStyle";
 import axios from "axios";
 import { goToPokedex, goToPokedexDetail } from "../../Routs/coordinator";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Box, Card, CardHeader, CardBody, CardFooter, Stack, Heading, Text, Divider, ButtonGroup, Button } from "@chakra-ui/react";
+
+
 
 
 
@@ -44,40 +49,47 @@ export const PokemonCard = ({ pokemon }) => {
   return (
     <PokemonCardContainerStyled >
        {pokeDate.name && (
-        <Card> 
-        <Box  />
-          <CardBody >
+        <Card >
+        
+
+        
+          
             <img
               src={pokeDate.sprites?.other["official-artwork"].front_default}
               alt="imagem do pokemon"
+              
             />
-            <Stack mt="6" spacing="3">
+                      
+            
+
               <Heading size="md">{pokeDate.name}</Heading>
-              <Text></Text>
-              <Text color="blue.600" fontSize="2xl">
-                $450
-              </Text> 
-            </Stack> 
-          </CardBody>
-          <Divider />
-          <CardFooter>
+             
+              
+             
+             
+          
+          
+          
             <ButtonGroup spacing="2">
-              <Button
+              <Button className="detail"
                 onClick={() => goToPokedexDetail(navigate, pokeDate.name)}
-                variant="solid"
+                
+                variant="ghost"
                 colorScheme="blue"
+                font-family= "Poppins"
               >
                 Detalhes
               </Button>
-              <Button
+              <Button className="to-catch"
                 onClick={()=>addPokemonHome(pokeDate.id)}
-                variant="ghost"
-                colorScheme="blue"
+                
+                
+                
               >
-                Capturar
+                c
               </Button>
             </ButtonGroup>
-          </CardFooter>
+          
         </Card>
       )} 
     </PokemonCardContainerStyled>
