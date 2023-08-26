@@ -1,11 +1,15 @@
 import styled from "styled-components";
+import FundoCard from "../../assets/Rectangle2.jpg"
 
 export const RenderList = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 40px;
   column-gap: 20px;
-  padding: 5vh 10vw;
+  padding: 5vh 5vw;
+  
+  
+
 
   img {
     width: 193px;
