@@ -7,19 +7,19 @@ import {
 import {
   ButtonContainer,
   ButtonPokedex,
-  HeaderBranca,
+  
   HeaderContainerMaster,
   HeaderImgContainer,
   HeadersContainer,
 } from "./headerStyle";
 import PokemonWhite from "../../assets/PokemonWhite.svg";
-import Branca from "../../assets/Branca.jpeg";
+
 
 const Header = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  console.log(location);
+  
 
   return (
     <HeadersContainer>
