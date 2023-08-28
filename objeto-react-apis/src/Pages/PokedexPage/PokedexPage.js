@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { PokedexContainer } from "./pokedexPageStyle";
+import { HeaderContainer, PokedexContainer } from "./pokedexPageStyle";
 import { goToPokedexDetail, goToPokemon } from "../../Routs/coordinator";
 import Header from "../../Components/Header/Header";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,9 @@ const PokedexPage = ({ isAdded }) => {
   return (
     <>
       <PokedexContainer>
+        <HeaderContainer>
         <Header />
+        </HeaderContainer>
         <header>
           
           <h1>POKEDEX</h1>
@@ -30,7 +32,6 @@ const PokedexPage = ({ isAdded }) => {
 
         <section>
           <div>
-            <h2>Poke Card</h2>
             <button className="buttondelete" onClick={deletePokemon}>
               Excluir
             </button>
@@ -38,41 +39,7 @@ const PokedexPage = ({ isAdded }) => {
               Ver detal.
             </button>
           </div>
-          <div>
-            <h2>Poke Card</h2>
-            <button>Adcionar</button>
-            <button>Ver detal.</button>
-          </div>
-          <div>
-            <h2>Poke Card</h2>
-            <button>Adcionar</button>
-            <button>Ver detal.</button>
-          </div>
-          <div>
-            <h2>Poke Card</h2>
-            <button>Adcionar</button>
-            <button>Ver detal.</button>
-          </div>
-          <div>
-            <h2>Poke Card</h2>
-            <button>Adcionar</button>
-            <button>Ver detal.</button>
-          </div>
-          <div>
-            <h2>Poke Card</h2>
-            <button>Adcionar</button>
-            <button>Ver detal.</button>
-          </div>
-          <div>
-            <h2>Poke Card</h2>
-            <button>Adcionar</button>
-            <button>Ver detal.</button>
-          </div>
-          <div>
-            <h2>Poke Card</h2>
-            <button>Adcionar</button>
-            <button>Ver detal.</button>
-          </div>
+          
         </section>
       </PokedexContainer>
     </>

@@ -1,14 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import {
-  goToPokedexDetail,
   goToPokedex,
   goToPokemon,
 } from "../../Routs/coordinator";
 import {
   ButtonContainer,
-  ButtonPokedex,
-  
-  HeaderContainerMaster,
   HeaderImgContainer,
   HeadersContainer,
 } from "./headerStyle";
@@ -23,13 +19,10 @@ const Header = () => {
 
   return (
     <HeadersContainer>
-        {/* <HeaderBranca>
-        <img className="Branca" src={Branca} />
-        </HeaderBranca> */}
+        
       <HeaderImgContainer className="Pokemon" src={PokemonWhite} alt="logo do Pokemon" />
         
-        {/* <img className="Pokemon" src={PokemonWhite} alt="logo do Pokemon" /> */}
-      {/* </HeaderImgContainer> */}
+     
 
       <ButtonContainer>
         {!location.pathname.includes("pokedex") ? (
@@ -38,7 +31,9 @@ const Header = () => {
           <button onClick={() => goToPokemon(navigate)}>
             Lista de Pokemons
           </button>
+          
         )}
+        <button className = "exceto-pagina-inicial">Todos os Pokemons</button>
       </ButtonContainer>
     </HeadersContainer>
   );

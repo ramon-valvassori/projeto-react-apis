@@ -7,7 +7,8 @@ export const PokemonCardContainerStyled = styled.div``;
 export const RecipeCardStyled = styled.div``;
 
 export const Card = styled.div`
-  background-image: url(${FundoCard});
+background-color: ${(props) => props.color};
+  //background-image: url(${FundoCard});
   background-position: center;
   background-repeat: no-repeat;
   width: 440px;
@@ -25,88 +26,94 @@ export const Card = styled.div`
     background-position: right;
     background-repeat: no-repeat;
     width: 250.733px;
-height: 210.733px;
-    
+    height: 210.733px;
     flex-shrink: 0;
     top: 0;
     left: 42%;
     z-index: -2;
-    
+  }
+
+  p {
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 0%;
+    font-weight: 700;
+    line-height: normal;
+    padding-top: 20px;
+    padding-left: 23px;
+    padding-bottom: 8px;
   }
 
   h1 {
-    color: #fff;
-    font-family: Inter;
     font-size: 32px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
+    letter-spacing: 0em;
+    text-align: left;
+    font-size: 32px;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #fff;
+    font-style: normal;
+    line-height: 0%;
     left: 23px;
     top: 40px;
     text-transform: capitalize;
     padding-top: 5px;
     padding-left: 23px;
   }
-
-  h2 {
-    color: #fff;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    padding-top: 25px;
-    padding-left: 23px;
-    padding-bottom: 0px;
-  }
 `;
+
+export const TypesPokemon = styled.div`
+
+`
+export const PokemonType = styled.div``
+
+
+export const TypesPokeCard = styled.img`
+
+`
 
 export const Heading = styled.div``;
 
 export const ButtonGroup = styled.div`
-  
   display: flex;
   justify-content: space-between;
-  `
+`;
 
- 
- 
+export const ButtonDetail = styled.button`
+  margin-left: 15px;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration-line: underline;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  margin-top: 95px;
+`;
 
-  export const ButtonDetail = styled.button`
-    margin-left: 15px;
-    
-    color: #fff;
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-decoration-line: underline;
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    margin-top: 80px;
-  `
-
-  export const ButtonCapturar = styled.button`
-    color: white;
-    margin-right: 15px;
-    margin-top: 80px;
-    background-image: url(${fundocapturar});
-    background-position: center;
-    background-repeat: no-repeat;
-
-    width: 146px;
-    height: 38px;
-    padding: 4px 10px;
-
-    border-radius: 8px;
-    left: 272px;
-    top: 159px;
-    cursor: pointer;
-    border: none;
-    
-  
+export const ButtonCapturar = styled.button`
+  color: white;
+  margin-right: 15px;
+  margin-top: 95px;
+  background-image: url(${fundocapturar});
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 146px;
+  height: 38px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  left: 272px;
+  top: 159px;
+  cursor: pointer;
+  border: none;
 `;
 
 export const Button = styled.div``;
