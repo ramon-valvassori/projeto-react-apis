@@ -5,6 +5,10 @@ import {
   ButtonGroup,
   Card,
   PokemonCardContainerStyled,
+  PokemonName,
+  PokemonType,
+  TypesPokeCard,
+  TypesPokemon,
 } from "./pokemonCardStyle";
 import axios from "axios";
 import { goToPokedex, goToPokedexDetail } from "../../Routs/coordinator";
@@ -12,6 +16,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import marcadagua from "../../assets/marcadagua.png";
 
 import GlobalContext from "../../context/GlobalContext";
+import { getTypes } from "../../untils/ReturnPokemonType";
+import { getColors } from "../../untils/ReturnCardColor";
+import pokemons from "../../pokemon/pokemons.json";
 
 export const PokemonCard = ({ pokemon }) => {
   const { newPokemon, setNewPokemon } = useContext(GlobalContext);
@@ -26,7 +33,7 @@ export const PokemonCard = ({ pokemon }) => {
     axios
       .get(pokemon.url)
       .then((resp) => {
-        console.log(resp.data);
+       // console.log(resp.data);
 
         setPokeDate(resp.data);
       })
@@ -42,18 +49,24 @@ export const PokemonCard = ({ pokemon }) => {
   return (
     <PokemonCardContainerStyled>
       {pokeDate.name && (
-        <Card>
+        <Card color={getColors(pokeDate.id)}>
           <img
             src={pokeDate.sprites?.other["official-artwork"].front_default}
             alt="imagem do pokemon"
           />
           <img src={marcadagua} className="marcadagua" alt="marcadagua" />
-          <h2>{`#0${pokeDate.id}`}</h2>
+          <p>{`#0${pokeDate.id}`}</p>
           <h1>{pokeDate.name}</h1>
-          {/*  <img src={pokeDate.types?.[0].type.url} className="tipo-1-nome" alt="tipo 1 nome"  /> 
-          {console.log(pokeDate.types?.[0].type.url)}
-          
-          <h1>{pokeDate.types?.[0].type.name}</h1> */}
+          <TypesPokemon>
+            {pokemons.map((type) => {
+            return <PokemonType key={type} src={getTypes(type)} alt='' />
+          })}
+                
+      
+              </TypesPokemon>        
+                
+             
+                  
 
           <ButtonGroup>
             <ButtonDetail

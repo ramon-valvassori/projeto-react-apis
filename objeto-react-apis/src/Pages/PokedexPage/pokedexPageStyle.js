@@ -38,3 +38,9 @@ export const PokedexContainer = styled.div`
     }
   }
 `;
+
+export const HeaderContainer = styled.div`
+  button{
+    display: none;
+  }
+`
