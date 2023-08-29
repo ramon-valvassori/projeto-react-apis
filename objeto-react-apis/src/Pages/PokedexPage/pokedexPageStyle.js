@@ -44,3 +44,6 @@ export const HeaderContainer = styled.div`
     display: none;
   }
 `
+export const ButtonBack = styled.img`
+
+`

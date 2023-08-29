@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
-import { HeaderContainer, PokedexContainer } from "./pokedexPageStyle";
+import React, { useContext, useEffect } from "react";
+import { ButtonBack, HeaderContainer, PokedexContainer } from "./pokedexPageStyle";
 import { goToPokedexDetail, goToPokemon } from "../../Routs/coordinator";
 import Header from "../../Components/Header/Header";
 import { useNavigate } from "react-router-dom";
+import GlobalContext from "../../context/GlobalContext";
 
 const PokedexPage = ({ isAdded }) => {
   const navigate = useNavigate();
+
+  const { pokeDate } = useContext(GlobalContext);
 
   useEffect(() => {
     localStorage.getItem("lista");
@@ -31,11 +34,14 @@ const PokedexPage = ({ isAdded }) => {
         </header>
 
         <section>
+          <ButtonBack>
+          <button onClick={()=>goToPokemon(navigate)}>Todos os Pokemons</button>
+          </ButtonBack>
           <div>
             <button className="buttondelete" onClick={deletePokemon}>
               Excluir
             </button>
-            <button onClick={() => goToPokedexDetail(navigate)}>
+            <button onClick={() => goToPokedexDetail(navigate, pokeDate.name)}>
               Ver detal.
             </button>
           </div>

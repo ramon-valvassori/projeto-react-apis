@@ -7,7 +7,7 @@ import {
 import Header from "../../Components/Header/Header";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { goToPokedex } from "../../Routs/coordinator";
+import { goToPokedex, goToPokemon } from "../../Routs/coordinator";
 import PokedexPage from "../PokedexPage/PokedexPage";
 import GlobalContext from "../../context/GlobalContext";
 
@@ -59,7 +59,7 @@ const PokedexDetailPage = () => {
       <PokedexDetailHeader>
         <div>
           <section className="header">
-            <button onClick={() => goToPokedex(navigate)}>Voltar</button>
+            <button onClick={() => goToPokemon(navigate)}>Todos os Pokemons</button>
             <h1>{name}</h1>
             <button
               onClick={() => {

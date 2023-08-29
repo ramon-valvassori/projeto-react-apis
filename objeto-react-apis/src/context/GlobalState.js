@@ -12,6 +12,8 @@ function GlobalState (props) {
 
     const [getPokemon, setGetPokemon] = useState()
 
+    const [pokeDate, setPokeDate] = useState({});
+
 
   const [newPokemon, setNewPokemon] = useState()
 
@@ -31,7 +33,9 @@ function GlobalState (props) {
       addPokemonHome,
       deletePokemon,
       setNewPokemon,
-      newPokemon
+      newPokemon,
+      setPokeDate,
+      pokeDate
     }
 
 

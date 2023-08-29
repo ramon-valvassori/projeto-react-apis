@@ -25,7 +25,7 @@ export const PokemonCard = ({ pokemon }) => {
 
   const { setGetPokemon, addPokemonHome } = useContext(GlobalContext);
 
-  const [pokeDate, setPokeDate] = useState({});
+  const { pokeDate, setPokeDate } = useContext(GlobalContext);
 
   const navigate = useNavigate();
 

@@ -21,10 +21,14 @@ export const HeaderImgContainer = styled.img`
   width: 307px;
   grid-column: 3/4;
   height: 113px;
-`;
+  margin-top: 5%;
+  `
 
 export const ButtonContainer = styled.div`
     grid-column: 5/6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   button {
     width: 257px;
     height: 74px;
@@ -33,6 +37,7 @@ export const ButtonContainer = styled.div`
     background: #33a4f5;
     animation-timing-function: ease-out;
     animation-duration: 300ms;
+    
 
     color: #fff;
     font-family: Poppins;
