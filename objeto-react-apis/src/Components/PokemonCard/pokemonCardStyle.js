@@ -7,8 +7,8 @@ export const PokemonCardContainerStyled = styled.div``;
 export const RecipeCardStyled = styled.div``;
 
 export const Card = styled.div`
-background-color: ${(props) => props.color};
-  //background-image: url(${FundoCard});
+//background-color: ${(props) => props.color};
+  background-image: url(${FundoCard});
   background-position: center;
   background-repeat: no-repeat;
   width: 440px;

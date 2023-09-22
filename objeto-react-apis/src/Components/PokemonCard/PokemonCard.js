@@ -14,18 +14,20 @@ import axios from "axios";
 import { goToPokedex, goToPokedexDetail } from "../../Routs/coordinator";
 import { useLocation, useNavigate } from "react-router-dom";
 import marcadagua from "../../assets/marcadagua.png";
+import bug from "../../assets/pokemon-types/bug.png"
 
 import GlobalContext from "../../context/GlobalContext";
 import { getTypes } from "../../untils/ReturnPokemonType";
 import { getColors } from "../../untils/ReturnCardColor";
 import pokemons from "../../pokemon/pokemons.json";
+import { flushSync } from "react-dom";
 
 export const PokemonCard = ({ pokemon }) => {
   const { newPokemon, setNewPokemon } = useContext(GlobalContext);
 
   const { setGetPokemon, addPokemonHome } = useContext(GlobalContext);
 
-  const { pokeDate, setPokeDate } = useContext(GlobalContext);
+  const [pokeDate, setPokeDate] = useState({});
 
   const navigate = useNavigate();
 
@@ -33,7 +35,7 @@ export const PokemonCard = ({ pokemon }) => {
     axios
       .get(pokemon.url)
       .then((resp) => {
-       // console.log(resp.data);
+        console.log(resp.data);
 
         setPokeDate(resp.data);
       })
@@ -49,7 +51,7 @@ export const PokemonCard = ({ pokemon }) => {
   return (
     <PokemonCardContainerStyled>
       {pokeDate.name && (
-        <Card color={getColors(pokeDate.id)}>
+        <Card color={pokeDate.id}>
           <img
             src={pokeDate.sprites?.other["official-artwork"].front_default}
             alt="imagem do pokemon"
@@ -57,16 +59,10 @@ export const PokemonCard = ({ pokemon }) => {
           <img src={marcadagua} className="marcadagua" alt="marcadagua" />
           <p>{`#0${pokeDate.id}`}</p>
           <h1>{pokeDate.name}</h1>
+          {/* <img src={bug}></img> */}
           <TypesPokemon>
-            {pokemons.map((type) => {
-            return <PokemonType key={type} src={getTypes(type)} alt='' />
-          })}
-                
-      
-              </TypesPokemon>        
-                
-             
-                  
+            
+          </TypesPokemon>
 
           <ButtonGroup>
             <ButtonDetail

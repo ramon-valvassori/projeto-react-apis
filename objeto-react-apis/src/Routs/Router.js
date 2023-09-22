@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom'
 import PokedexPage from "../Pages/PokedexPage/PokedexPage"
 
 import PokedexDetailPage from "../Pages/PokedexDetailPage/PokedexDetailPage"
@@ -9,7 +9,7 @@ import PokemonListPage from '../Pages/PokemonListPage/PokemonListPage'
 
 const Router = () => {
     return(
-        <BrowserRouter>
+        <HashRouter>
             <Routes>
                 <Route path="/" element={<PokemonListPage PokemonCard={PokemonCard}/>}/>
                 <Route path="/pokedex/" element={<PokedexPage/>}/>
@@ -17,7 +17,7 @@ const Router = () => {
                 <Route path="*"  element={<ErrorPage/>}/>
 
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
