@@ -8,7 +8,8 @@ export const RecipeCardStyled = styled.div``;
 
 export const Card = styled.div`
 background-color: ${(props) => props.color};
-  //background-image: url(${FundoCard});
+
+  
   background-position: center;
   background-repeat: no-repeat;
   width: 440px;
@@ -66,15 +67,13 @@ background-color: ${(props) => props.color};
     padding-left: 23px;
   }
 `;
-
 export const TypesPokemon = styled.div`
-
-`
-export const PokemonType = styled.div``
-
+display: flex`
 
 export const TypesPokeCard = styled.img`
-
+height: 31;
+  margin-right: 8px;
+  margin-top: 10px;
 `
 
 export const Heading = styled.div``;

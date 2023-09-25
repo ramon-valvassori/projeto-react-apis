@@ -12,11 +12,13 @@ function GlobalState (props) {
 
     const [getPokemon, setGetPokemon] = useState()
 
+    
+
 
   const [newPokemon, setNewPokemon] = useState()
 
     const addPokemonHome = (id) => {
-      setGetPokemon(newPokemon)
+      setGetPokemon(newPokemon, id)
     }
 
       const deletePokemon = () => {
@@ -31,7 +33,8 @@ function GlobalState (props) {
       addPokemonHome,
       deletePokemon,
       setNewPokemon,
-      newPokemon
+      newPokemon,
+     
     }
 
 

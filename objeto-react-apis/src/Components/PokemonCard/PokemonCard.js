@@ -5,10 +5,8 @@ import {
   ButtonGroup,
   Card,
   PokemonCardContainerStyled,
-  PokemonName,
-  PokemonType,
   TypesPokeCard,
-  TypesPokemon,
+  TypesPokemon
 } from "./pokemonCardStyle";
 import axios from "axios";
 import { goToPokedex, goToPokedexDetail } from "../../Routs/coordinator";
@@ -18,7 +16,6 @@ import marcadagua from "../../assets/marcadagua.png";
 import GlobalContext from "../../context/GlobalContext";
 import { getTypes } from "../../untils/ReturnPokemonType";
 import { getColors } from "../../untils/ReturnCardColor";
-import pokemons from "../../pokemon/pokemons.json";
 
 export const PokemonCard = ({ pokemon }) => {
   const { newPokemon, setNewPokemon } = useContext(GlobalContext);
@@ -27,15 +24,21 @@ export const PokemonCard = ({ pokemon }) => {
 
   const [pokeDate, setPokeDate] = useState({});
 
+  const [colors, setColors] = useState({})
+
+  const {types, setTypes} = useState({})
+
   const navigate = useNavigate();
 
   const getPokemons = () => {
     axios
       .get(pokemon.url)
       .then((resp) => {
-       // console.log(resp.data);
+        console.log(resp.data);
 
         setPokeDate(resp.data);
+        setColors(getColors(resp.data.types[0].type.name));
+        setTypes(getTypes(resp.data.types));
       })
       .catch((erro) => {});
   };
@@ -46,10 +49,13 @@ export const PokemonCard = ({ pokemon }) => {
   /* const listaPokemon = JSON.stringify(newPokemon);
     localStorage.setItem("lista", listaPokemon); */
 
+    
+
   return (
     <PokemonCardContainerStyled>
       {pokeDate.name && (
-        <Card color={getColors(pokeDate.id)}>
+        <Card color={colors}>
+          <div>
           <img
             src={pokeDate.sprites?.other["official-artwork"].front_default}
             alt="imagem do pokemon"
@@ -57,16 +63,22 @@ export const PokemonCard = ({ pokemon }) => {
           <img src={marcadagua} className="marcadagua" alt="marcadagua" />
           <p>{`#0${pokeDate.id}`}</p>
           <h1>{pokeDate.name}</h1>
+          </div>
           <TypesPokemon>
-            {pokemons.map((type) => {
-            return <PokemonType key={type} src={getTypes(type)} alt='' />
-          })}
-                
-      
-              </TypesPokemon>        
-                
-             
-                  
+           {types && types.length > 0 ? (
+              types.map((type) => {
+                return (
+                  <TypesPokeCard
+                    key={type.type.name}
+                    src={type.image}
+                  />
+                );
+              })
+            ) : (
+              <p>Nenhum tipo encontrado</p>
+            )}
+
+          </TypesPokemon>
 
           <ButtonGroup>
             <ButtonDetail
@@ -79,29 +91,11 @@ export const PokemonCard = ({ pokemon }) => {
             ></ButtonCapturar>
           </ButtonGroup>
         </Card>
-      )}
+        )} 
+      
     </PokemonCardContainerStyled>
+    
   );
+  
 };
 
-{
-  /* <div className='LeftCard'>
-        <span>#</span>
-        <h2>name</h2>
-        <div className='Frames'>
-          <img src={Grass} alt="" />
-          <img src={Frame2} alt="" />
-        </div>
-        <button onClick={() => goToPokemonDetailsPage(navigate, pokemon.name)}  >Detalhes</button>
-      </div> 
-      <div className='RightCard'>
-        <img className='MarcaDgua' src={pngwing2} alt="" />
-        <img className='Pokemon' src={imagem3} alt="pokemon.name" />
-        {location.pathname === "/" ? (
-          <button onClick={() => addToPokedex(pokemon)} className='BtnCapturar'>Capturar!</button>
-        ) : (
-          <button onClick={() => removeFromPokedex(pokemon)} className='BtnExcluir'>Excluir</button>
-        )}
-      </div>
- */
-}
