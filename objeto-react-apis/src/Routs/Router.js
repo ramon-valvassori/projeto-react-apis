@@ -9,7 +9,7 @@ import PokemonListPage from '../Pages/PokemonListPage/PokemonListPage'
 
 const Router = () => {
     return(
-        <HashRouter>
+        <BrowserRouter>
             <Routes>
                 <Route path="/" element={<PokemonListPage PokemonCard={PokemonCard}/>}/>
                 <Route path="/pokedex/" element={<PokedexPage/>}/>
@@ -17,7 +17,7 @@ const Router = () => {
                 <Route path="*"  element={<ErrorPage/>}/>
 
             </Routes>
-        </HashRouter>
+        </BrowserRouter>
     )
 }
 
