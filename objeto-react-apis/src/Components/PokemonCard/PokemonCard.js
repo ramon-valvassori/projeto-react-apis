@@ -34,7 +34,7 @@ export const PokemonCard = ({ pokemon }) => {
     axios
       .get(pokemon.url)
       .then((resp) => {
-        //console.log(resp.data);
+        console.log(resp.data);
 
         setPokeDate(resp.data);
         setColors(getColors(resp.data.types[0].type.name));
