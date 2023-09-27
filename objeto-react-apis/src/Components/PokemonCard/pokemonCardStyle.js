@@ -71,6 +71,7 @@ export const TypesPokemon = styled.div`
 display: flex`
 
 export const TypesPokeCard = styled.img`
+
 height: 31;
   margin-right: 8px;
   margin-top: 10px;

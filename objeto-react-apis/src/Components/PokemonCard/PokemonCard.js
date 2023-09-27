@@ -26,7 +26,7 @@ export const PokemonCard = ({ pokemon }) => {
 
   const [colors, setColors] = useState({})
 
-  const {types, setTypes} = useState({})
+  const {typeTypes, setTypeTypes} = useState([])
 
   const navigate = useNavigate();
 
@@ -34,17 +34,22 @@ export const PokemonCard = ({ pokemon }) => {
     axios
       .get(pokemon.url)
       .then((resp) => {
-        console.log(resp.data);
+        //console.log(resp.data);
 
         setPokeDate(resp.data);
         setColors(getColors(resp.data.types[0].type.name));
-        setTypes(getTypes(resp.data.types));
+        setTypeTypes(resp.data.types);
+        
       })
       .catch((erro) => {});
   };
   useEffect(() => {
     getPokemons();
   }, []);
+
+  useEffect(() => {
+    console.log(typeTypes); // isso irá imprimir a lista de tipos do Pokémon no console
+  }, [typeTypes]);
 
   /* const listaPokemon = JSON.stringify(newPokemon);
     localStorage.setItem("lista", listaPokemon); */
@@ -65,18 +70,19 @@ export const PokemonCard = ({ pokemon }) => {
           <h1>{pokeDate.name}</h1>
           </div>
           <TypesPokemon>
-           {types && types.length > 0 ? (
-              types.map((type) => {
-                return (
-                  <TypesPokeCard
-                    key={type.type.name}
-                    src={type.image}
-                  />
-                );
-              })
-            ) : (
-              <p>Nenhum tipo encontrado</p>
-            )}
+        {typeTypes?.map((type) => {
+          return (
+            <div>
+          <TypesPokeCard 
+            key={type.type.name}
+            src={getTypes(type.image)}       
+          />
+          <p>{type.type.name}</p>
+          </div>
+          )})}
+          
+                  
+        
 
           </TypesPokemon>
 
