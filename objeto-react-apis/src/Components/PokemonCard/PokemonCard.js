@@ -26,7 +26,7 @@ export const PokemonCard = ({ pokemon }) => {
 
   const [colors, setColors] = useState({})
 
-  const {typeTypes, setTypeTypes} = useState({})
+  const {typeTypes, setTypeTypes} = useState([])
 
   const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ export const PokemonCard = ({ pokemon }) => {
 
         setPokeDate(resp.data);
         setColors(getColors(resp.data.types[0].type.name));
-        setTypeTypes(getTypes(resp.data.types));
+        setTypeTypes(resp.data.types);
         
       })
       .catch((erro) => {});
@@ -70,11 +70,17 @@ export const PokemonCard = ({ pokemon }) => {
           <h1>{pokeDate.name}</h1>
           </div>
           <TypesPokemon>
-          {pokeDate.typeTypes?.map((type) => 
+        {typeTypes?.map((type) => {
+          return (
+            <div>
           <TypesPokeCard 
-            src={type.type.name}       
+            key={type.type.name}
+            src={getTypes(type.image)}       
           />
-          )}
+          <p>{type.type.name}</p>
+          </div>
+          )})}
+          
                   
         
 
