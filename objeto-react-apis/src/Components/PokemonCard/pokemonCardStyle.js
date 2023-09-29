@@ -7,9 +7,8 @@ export const PokemonCardContainerStyled = styled.div``;
 export const RecipeCardStyled = styled.div``;
 
 export const Card = styled.div`
-background-color: ${(props) => props.color};
+  background-color: ${(props) => props.color};
 
-  
   background-position: center;
   background-repeat: no-repeat;
   width: 440px;
@@ -68,14 +67,19 @@ background-color: ${(props) => props.color};
   }
 `;
 export const TypesPokemon = styled.div`
-display: flex`
+  
+`;
 
 export const TypesPokeCard = styled.img`
+  margin-left: -230px;
+  margin-bottom: -10px;
+  
+    width: 100px;
+    height: 50px;
+  
 
-height: 31;
-  margin-right: 8px;
-  margin-top: 10px;
-`
+
+`;
 
 export const Heading = styled.div``;
 
