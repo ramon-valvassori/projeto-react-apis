@@ -37,8 +37,7 @@ export const ButtonContainer = styled.div`
     background: #33a4f5;
     animation-timing-function: ease-out;
     animation-duration: 300ms;
-    
-
+    cursor: pointer;
     color: #fff;
     font-family: Poppins;
     font-size: 30px;

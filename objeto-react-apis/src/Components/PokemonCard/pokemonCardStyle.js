@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FundoCard from "../../assets/Rectangle2.jpg";
+
 import fundocapturar from "../../assets/fundocapturar.jpg";
 
 export const PokemonCardContainerStyled = styled.div``;
@@ -66,19 +66,12 @@ export const Card = styled.div`
     padding-left: 23px;
   }
 `;
-export const TypesPokemon = styled.div`
-  
-`;
+export const TypesPokemon = styled.div``;
 
 export const TypesPokeCard = styled.img`
-  margin-left: -230px;
-  margin-bottom: -10px;
-  
-    width: 100px;
-    height: 50px;
-  
-
-
+  width: 100px;
+  height: 100px;
+  margin: 5px;
 `;
 
 export const Heading = styled.div``;

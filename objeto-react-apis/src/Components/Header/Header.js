@@ -21,8 +21,9 @@ const Header = () => {
       />
 
       <ButtonContainer>
-        {/*  {!location.pathname.includes("pokedex") ? ( */}
+        
         <button onClick={() => goToPokedex(navigate)}>Pokédex</button>
+      
       </ButtonContainer>
     </HeadersContainer>
   );
