@@ -1,49 +1,42 @@
-import React from 'react';
+import React from "react";
 import { useState } from "react";
 import GlobalContext from "./GlobalContext";
-import { goToPokedex, goToPokemon } from '../Routs/coordinator';
+import { goToPokedex, goToPokemon } from "../Routs/coordinator";
 
+function GlobalState({children}) {
+  const [pokedexDetail, setPokedexDetail] = useState({});
 
-function GlobalState (props) {
+  const [getPokemon, setGetPokemon] = useState("");
 
-    const [pokedexDetail, setPokedexDetail] = useState({})
+  const [newPokemon, setNewPokemon] = useState("");
 
-    const [changePage, setChangePage] = useState()
+  const [pokeDate, setPokeDate] = useState([]);
 
-    const [getPokemon, setGetPokemon] = useState()
+  const addPokemonHome = (id) => {
+    setGetPokemon(newPokemon, id);
+  };
 
-    
+  const deletePokemon = () => {
+    setNewPokemon();
+  };
 
+  const data = {
+    getPokemon,
+    setGetPokemon,
+    pokedexDetail,
+    setPokedexDetail,
+    addPokemonHome,
+    deletePokemon,
+    setNewPokemon,
+    newPokemon,
+    pokeDate,
+    setPokeDate
+  };
 
-  const [newPokemon, setNewPokemon] = useState()
-
-    const addPokemonHome = (id) => {
-      setGetPokemon(newPokemon, id)
-    }
-
-      const deletePokemon = () => {
-        setNewPokemon()
-      }
-
-    const data = {
-      getPokemon, 
-      setGetPokemon,
-      pokedexDetail, 
-      setPokedexDetail,
-      addPokemonHome,
-      deletePokemon,
-      setNewPokemon,
-      newPokemon,
-     
-    }
-
-
-    
-  
-    return(
-      <GlobalContext.Provider value={data}>
-      {props.children}
-      </GlobalContext.Provider>
-    )
+  return (
+    <GlobalContext.Provider value={data}>
+      {children}
+    </GlobalContext.Provider>
+  );
 }
-export default GlobalState
+export default GlobalState;

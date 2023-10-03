@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FundoCard from "../../assets/Rectangle2.jpg";
+
 import fundocapturar from "../../assets/fundocapturar.jpg";
 
 export const PokemonCardContainerStyled = styled.div``;
@@ -7,9 +7,8 @@ export const PokemonCardContainerStyled = styled.div``;
 export const RecipeCardStyled = styled.div``;
 
 export const Card = styled.div`
-background-color: ${(props) => props.color};
+  background-color: ${(props) => props.color};
 
-  
   background-position: center;
   background-repeat: no-repeat;
   width: 440px;
@@ -67,15 +66,13 @@ background-color: ${(props) => props.color};
     padding-left: 23px;
   }
 `;
-export const TypesPokemon = styled.div`
-display: flex`
+export const TypesPokemon = styled.div``;
 
 export const TypesPokeCard = styled.img`
-
-height: 31;
-  margin-right: 8px;
-  margin-top: 10px;
-`
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+`;
 
 export const Heading = styled.div``;
 
