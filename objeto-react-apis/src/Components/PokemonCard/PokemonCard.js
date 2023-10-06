@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import {
   ButtonCapturar,
   ButtonDetail,
@@ -8,38 +8,22 @@ import {
   TypesPokeCard,
   TypesPokemon,
 } from "./pokemonCardStyle";
-import axios from "axios";
 import { goToPokedexDetail } from "../../Routs/coordinator";
 import { useNavigate } from "react-router-dom";
 import marcadagua from "../../assets/marcadagua.png";
 
 import GlobalContext from "../../context/GlobalContext";
 import { getTypes } from "../../untils/ReturnPokemonType";
-import { getColors } from "../../untils/ReturnCardColor";
 
-export const PokemonCard = ({ pokemon }) => {
-  const { pokeDate, setPokeDate, newPokemon, addPokemonHome } = useContext(GlobalContext);
+
+export const PokemonCard = () => {
+  const { pokeDate, colors, newPokemon, addPokemonHome } = useContext(GlobalContext);
 
   
 
-  const [colors, setColors] = useState({});
-
   const navigate = useNavigate();
 
-  const getPokemons = () => {
-    axios
-      .get(pokemon.name)
-      .then((resp) => {
-        //console.log(resp.data);
-
-        setPokeDate(resp.data);
-        setColors(getColors(resp.data.types[0].type.name));
-      })
-      .catch((err) => {});
-  };
-  useEffect(() => {
-    getPokemons();
-  }, []);
+  
 
   const listaPokemon = JSON.stringify(newPokemon);
     localStorage.setItem("lista", listaPokemon); 
