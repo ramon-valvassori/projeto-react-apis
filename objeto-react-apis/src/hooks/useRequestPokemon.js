@@ -6,9 +6,9 @@ import GlobalState from "../context/GlobalState";
 
 export const usePokemonList = () => {
   const [pokemonList, setPokemonList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
+ /*  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false); */
+  
   useEffect(() => {
     getPokemon();
   }, []);
@@ -21,5 +21,8 @@ export const usePokemonList = () => {
       console.log(error);
     }
   };
-  return [pokemonList];
+  return [pokemonList]
+
+  
 };
+

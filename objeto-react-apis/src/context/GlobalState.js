@@ -4,11 +4,11 @@ import GlobalContext from "./GlobalContext";
 import { getColors } from "../untils/ReturnCardColor";
 import axios from "axios";
 import { usePokemonList } from "../hooks/useRequestPokemon";
+import { BASE_URL } from "../constants/BaseUrl";
+
+function GlobalState({ children }) {
 
 
-function GlobalState({children}) {
-
- 
   const [pokedexDetail, setPokedexDetail] = useState({});
 
   const [getPokemon, setGetPokemon] = useState("");
@@ -19,37 +19,33 @@ function GlobalState({children}) {
 
   const [colors, setColors] = useState({});
 
-  const [listPokemon, setListPokemon] = useState([])
-  console.log(listPokemon);
+  const [listPokemon, setListPokemon] = useState([]);
 
-  const [pokemonList] = usePokemonList({});
+  const [pokemonList] = usePokemonList();
 
-  const renderPokeList = () => {
-    
-      pokemonList.map((pokemon) => {
-        return pokemon={setListPokemon}
-      });
+  const renderPokeList = () => {pokemonList.map((pokemon) => {
+     
+    return pokemon = { setListPokemon }
+  });
   }
-    
-    
-    
-//console.log(renderPokeList)
+  //console.log(renderPokeList)
   const getPokemons = () => {
     axios
-      .get(listPokemon)
-      
+      .get(`${pokemonList}`)
+
       .then((resp) => {
-      console.log(renderPokeList);
+        console.log(listPokemon);
 
         setPokeDate(resp.data);
         setColors(getColors(resp.data.types[0].type.name));
-        
-        
       })
-      .catch((err) => {console.log(err)});
+      .catch((err) => {
+        console.log(err);
+      });
   };
   useEffect(() => {
     getPokemons();
+    renderPokeList()
   }, []);
 
   const addPokemonHome = (id) => {
@@ -71,14 +67,11 @@ function GlobalState({children}) {
     newPokemon,
     pokeDate,
     colors,
-    /* renderPokeList */
+    renderPokeList,
   };
-
   return (
-    <GlobalContext.Provider value={data}>
-      {children}
-    </GlobalContext.Provider>
+    <GlobalContext.Provider value={data}>{children}</GlobalContext.Provider>
   );
-  }
+}
 
-export default GlobalState
+export default GlobalState;
